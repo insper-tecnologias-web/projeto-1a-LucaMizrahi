@@ -29,8 +29,8 @@ def index(request):
 
     note_template = load_template('components/note.html')
     notes_li = [
-        note_template.format(title=dados['titulo'], details=dados['detalhes'])
-        for dados in load_data('notes.json')
+        note_template.format(title=dados.title, details=dados.content)
+        for dados in load_data()
     ]
     notes = '\n'.join(notes_li)
     body = load_template('index.html').format(notes=notes)
