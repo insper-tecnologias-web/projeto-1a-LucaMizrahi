@@ -4,6 +4,8 @@ import json
 CUR_DIR = Path(__file__).parent
 
 def extract_route(request):
+    if request == '':
+        return ''
     retorno = request.split(' ')[1]
     retorno = retorno[1:]
     print(retorno)
