@@ -1,6 +1,6 @@
 from pathlib import Path
 import json
-from database import Database
+from database import Database, Note
 
 CUR_DIR = Path(__file__).parent
 
@@ -37,12 +37,16 @@ def load_template(filename):
     return loaded
 
 def add_json(params):
-    FULL_PATH = CUR_DIR / 'data' / 'notes.json'
+    note = Note(title=params['titulo'], content=params['detalhes'])
+    db = Database('banco')
+    db.add(note)
+
+    '''FULL_PATH = CUR_DIR / 'data' / 'notes.json'
     with open(FULL_PATH, 'r', encoding='UTF-8') as f:
         loaded = json.load(f)
     loaded.append(params)
     with open(FULL_PATH, 'w', encoding='UTF-8') as f:
-        f.write(json.dumps(loaded))
+        f.write(json.dumps(loaded))'''
 
 def build_response(body='', code=200, reason='OK', headers=''):
     if headers == '':
