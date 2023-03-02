@@ -2,6 +2,7 @@ from utils import load_data, load_template, build_response
 import urllib.parse
 from utils import add_json
 from database import Database, Note
+from utils import extract_route
 
 def index(request):
     # A string de request sempre começa com o tipo da requisição (ex: GET, POST)
@@ -44,6 +45,11 @@ def delete(id):
     return build_response(code=303, reason='See Other', headers='Location: /')
 
 def update(request):
+    route = extract_route(request)
+    id = route.split('/')[1]
+    
+    db = Database('banco')
+    note = db.get(id)
     
     body = load_template('edit.html')
     return build_response(body=body)

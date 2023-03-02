@@ -41,3 +41,9 @@ class Database:
         self.conn.execute(command)
         self.conn.commit()
 
+    def get(self, id):
+        cursor = self.conn.execute(f"select id, title, content from note where id ={id}")
+        linha = cursor.fetchone()
+        note = Note(linha[0], linha[1], linha[2])
+        return note
+
