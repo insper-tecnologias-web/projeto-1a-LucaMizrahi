@@ -50,6 +50,29 @@ def update(request):
     
     db = Database('banco')
     note = db.get(id)
+
+    body = load_template('edit.html').format(id=note.id, title=note.title, details=note.content)
     
-    body = load_template('edit.html')
+    if request.startswith('POST'):
+        request = request.replace('\r', '')  # Remove caracteres indesejados
+        # Cabeçalho e corpo estão sempre separados por duas quebras de linha
+        partes = request.split('\n\n')
+        corpo = partes[1]
+        params = {}
+        # Preencha o dicionário params com as informações do corpo da requisição
+        # O dicionário conterá dois valores, o título e a descrição.
+        # Posteriormente pode ser interessante criar uma função que recebe a
+        # requisição e devolve os parâmetros para desacoplar esta lógica.
+        # Dica: use o método split da string e a função unquote_plus
+        corpo = urllib.parse.unquote_plus(corpo, encoding='utf-8', errors='replace')
+        for chave_valor in corpo.split('&'):
+            chave, valor = chave_valor.split('=')
+            params[chave] = valor
+        
+        note.title = params['titulo']
+        note.content = params['detalhes']
+        db.update(note)
+
+        return build_response(code=303, reason='See Other', headers='Location: /')
+    
     return build_response(body=body)
