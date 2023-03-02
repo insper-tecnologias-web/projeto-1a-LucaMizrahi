@@ -137,6 +137,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
+  width: 70%;
 }
 
 .card{
@@ -169,6 +170,12 @@ body {
 
 }
 
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .card-title{
   font-family: 'Permanent Marker', cursive;
   font-weight: bold;
@@ -176,6 +183,35 @@ body {
   padding: 7px;
   font-size: 18px;
 
+}
+
+.button-holders {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.button-holders-edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  text-decoration: none;
+  margin: 5px;
+}
+
+.button-delete {
+  text-decoration: none;
+  height: 17px;
+  width: 13px;
+}
+
+.button-edit {
+  text-decoration: none;
+  height: 17px;
+  width: 15px;
 }
 
 .card-color-1{

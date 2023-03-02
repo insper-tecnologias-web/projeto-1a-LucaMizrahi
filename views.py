@@ -42,3 +42,8 @@ def delete(id):
     db = Database('banco')
     db.delete(id)
     return build_response(code=303, reason='See Other', headers='Location: /')
+
+def update(request):
+    
+    body = load_template('edit.html')
+    return build_response(body=body)
