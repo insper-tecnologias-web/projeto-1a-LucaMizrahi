@@ -27,6 +27,10 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Você pode usar o CSS comentado abaixo, se ajudar */
 /* Fonte: https://codepen.io/CrisWoler/pen/ogXBLj */
 .btn {
@@ -198,18 +202,15 @@ body {
 }
 
 .button {
-  text-decoration: none;
   margin: 5px;
 }
 
 .button-delete {
-  text-decoration: none;
   height: 17px;
   width: 13px;
 }
 
 .button-edit {
-  text-decoration: none;
   height: 17px;
   width: 15px;
 }
