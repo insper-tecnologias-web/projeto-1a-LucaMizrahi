@@ -54,3 +54,6 @@ def build_response(body='', code=200, reason='OK', headers=''):
     else:
         return f'HTTP/1.1 {code} {reason}\n{headers}\n\n{body}'.encode()
 
+def build_error(code, reason, message):
+    return build_response(body = load_template('pagina-erro.html').format(code=code, reason=reason, message=message), code=code, reason=reason)
+

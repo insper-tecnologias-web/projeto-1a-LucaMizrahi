@@ -1,6 +1,6 @@
 import socket
 from pathlib import Path
-from utils import extract_route, read_file, build_response
+from utils import extract_route, read_file, build_response, build_error
 from views import index, delete, update 
 
 CUR_DIR = Path(__file__).parent
@@ -34,7 +34,7 @@ while True:
     elif route.startswith('edit'):
         response = update(request)
     else:
-        response = build_response()
+        response = build_error(404, 'Not Found', 'Arquivo não encontrado.')
 
     client_connection.sendall(response)
 
