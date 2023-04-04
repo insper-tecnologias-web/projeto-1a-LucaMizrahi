@@ -215,6 +215,18 @@ a {
   width: 15px;
 }
 
+.container_avaliacao{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.link_avaliacao{
+  font-family: 'Permanent Marker', cursive;
+  font-weight: bold;
+}
+
 .card-color-1{
   background-color: #ead3a7;
 }
