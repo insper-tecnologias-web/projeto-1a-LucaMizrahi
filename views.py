@@ -76,3 +76,7 @@ def update(request):
         return build_response(code=303, reason='See Other', headers='Location: /')
     
     return build_response(body=body)
+
+def avaliacao(request):
+    body = load_template('avaliacao.html')
+    return build_response(body=body)
